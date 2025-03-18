@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Multi Bee 360 Roofing System',
-  description: 'Created with v0',
+  description: 'A strong roof, a safe house',
 }
 
 export default function RootLayout({
