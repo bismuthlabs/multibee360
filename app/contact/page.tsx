@@ -14,7 +14,7 @@ export default function ContactPage() {
       <ContactBanner />
       <ContactInfo />
       <ContactForm />
-      <ContactMap />
+      {/* <ContactMap /> */}
       <ContactFAQ />
       <Footer />
       <BackToTop />
