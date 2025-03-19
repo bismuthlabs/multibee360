@@ -56,7 +56,7 @@ export default function ContactInfo() {
                   <h3 className="text-lg font-bold text-secondary mb-1">Phone Number</h3>
                   <p className="text-gray-600">
                     <a href="tel:+233244211506" className="hover:text-primary transition-colors duration-300">
-                      +233-24-421-1506
+                      +233-24-421-1506 {"/"} +233-54-949-2005
                     </a>
                   </p>
                 </div>

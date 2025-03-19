@@ -10,7 +10,7 @@ const faqs = [
     id: 1,
     question: "How quickly can I expect a response after submitting a contact form?",
     answer:
-      "We typically respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our direct line at +233-24-421-1506 for immediate assistance.",
+      "We typically respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our direct line at +233-24-421-1506 or +233-54-949-2005 for immediate assistance.",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const faqs = [
     id: 5,
     question: "How do I schedule an emergency roof repair?",
     answer:
-      "For emergency roof repairs, please call our emergency hotline at +233-24-421-1506. This line is monitored 24/7, and we'll dispatch a team as quickly as possible to address your urgent roofing needs.",
+      "For emergency roof repairs, please call our emergency hotline at +233-24-421-1506 or +233-54-949-2005. This line is monitored 24/7, and we'll dispatch a team as quickly as possible to address your urgent roofing needs.",
   },
 ]
 
