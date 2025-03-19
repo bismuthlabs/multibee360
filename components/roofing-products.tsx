@@ -10,15 +10,15 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 const products = [
   {
     id: 1,
-    name: "Euro Tiles",
+    name: "Step Tiles",
     description: "Premium European-style roof tiles with elegance and durability.",
     color: "bg-red-600",
     image: "assets/images/euro-tile-sheet.jpg"
   },
   {
     id: 2,
-    name: "IBR Roofing Sheet",
-    description: "Cost-effective roofing in various colors and styles.",
+    name: "IDT Roofing Sheet",
+    description: "Versatile corrugated metal roofing sheets offering cost-effective solutions in various colors.",
     color: "bg-gray-700",
     image: "assets/images/colour-coated-roofing-sheets.jpg"
   },
@@ -31,12 +31,26 @@ const products = [
   },
   {
     id: 4,
-    name: "Aluzinc",
-    description: "Aluminum-zinc coated steel with corrosion resistance.",
+    name: "Euro Tiles",
+    description: "Elegant European-inspired roof tiles designed for durability and timeless style.",
     color: "bg-zinc-600",
-    image: "assets/images/roofing-sheets-color-coated-aluzinc.webp"
+    image: "assets/images/euro-tiles.jpeg"
   },
-]
+  {
+    id: 5,
+    name: "IBR Roofing Sheet",
+    description: "Robust inverted box rib metal roofing sheets, cost-effective with a range of color options.",
+    color: "bg-gray-700",
+    image: "assets/images/ibr-roofing.webp"
+  },
+  {
+    id: 6,
+    name: "Plastic Gutters",
+    description: "Durable plastic gutter systems for efficient roof drainage in various styles and colors.",
+    color: "bg-gray-700",
+    image: "assets/images/plastic-gutters.avif"
+  },
+];
 
 export default function RoofingProducts() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -150,7 +164,7 @@ export default function RoofingProducts() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex justify-center items-center mt-8 gap-4">
+          <div className="flex justify-center items-center mt-8 gap-4 md:hidden">
             <button
               onClick={handlePrev}
               className="w-12 h-12 rounded-full bg-white text-primary border border-primary/20 hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center"

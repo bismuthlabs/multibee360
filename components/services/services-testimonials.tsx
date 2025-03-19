@@ -9,43 +9,31 @@ import Image from "next/image"
 const testimonials = [
   {
     id: 1,
-    name: "Jennifer Anderson",
-    role: "Homeowner",
-    company: "Residential Client",
+    name: "Mr Akwasi Kwateng",
+    role: "",
+    company: "",
     quote:
       "The team at Multi-Bee 360 transformed our home with a beautiful new roof. Their attention to detail and professionalism exceeded our expectations. The project was completed on time and within budget.",
     rating: 5,
-    service: "Roof Installation",
   },
   {
     id: 2,
-    name: "David Martinez",
-    role: "Operations Director",
-    company: "Commercial Properties Inc.",
+    name: "Mr Thomas Boakye",
+    role: "",
+    company: "",
     quote:
       "We've worked with many roofing contractors over the years, but Multi-Bee 360 stands out for their exceptional quality and service. They handled our complex commercial project with expertise and precision.",
     rating: 5,
-    service: "Modified Roofing",
   },
+
   {
     id: 3,
-    name: "Samantha Wilson",
-    role: "Property Manager",
-    company: "Lakeside Apartments",
+    name: "Elder Philip",
+    role: "",
+    company: "",
     quote:
       "After severe storm damage, Multi-Bee 360 quickly assessed and repaired our apartment complex roofs. Their emergency response was impressive, and they worked seamlessly with our insurance company.",
     rating: 4,
-    service: "Roof Renovation",
-  },
-  {
-    id: 4,
-    name: "Michael Thompson",
-    role: "Business Owner",
-    company: "Thompson's Hardware",
-    quote:
-      "The maintenance program from Multi-Bee 360 has saved us thousands in potential repairs. Their regular inspections and preventative care have extended the life of our commercial roof significantly.",
-    rating: 5,
-    service: "Roof Maintenance",
   },
 ]
 
@@ -121,9 +109,9 @@ export default function ServicesTestimonials() {
                 className="bg-gray-50 rounded-lg p-8 md:p-12 shadow-md relative"
               >
                 {/* Service tag */}
-                <div className="absolute top-6 right-6 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium">
+                {/* <div className="absolute top-6 right-6 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium">
                   {testimonials[current].service}
-                </div>
+                </div> */}
 
                 {/* Quote mark accent */}
                 <div className="absolute -top-6 -left-6 bg-primary text-white rounded-full p-4">
@@ -153,9 +141,9 @@ export default function ServicesTestimonials() {
                     {/* Client Info */}
                     <div>
                       <h4 className="text-xl font-bold text-secondary">{testimonials[current].name}</h4>
-                      <p className="text-gray-600">
+                      {/* <p className="text-gray-600">
                         {testimonials[current].role}, {testimonials[current].company}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>

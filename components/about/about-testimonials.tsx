@@ -9,27 +9,28 @@ import Image from "next/image"
 const testimonials = [
   {
     id: 1,
-    name: "Jennifer Anderson",
-    role: "Homeowner",
-    company: "Residential Client",
+    name: "Mr Akwasi Kwateng",
+    role: "",
+    company: "",
     quote:
       "The team at Multi-Bee 360 transformed our home with a beautiful new roof. Their attention to detail and professionalism exceeded our expectations. The project was completed on time and within budget.",
     rating: 5,
   },
   {
     id: 2,
-    name: "David Martinez",
-    role: "Operations Director",
-    company: "Commercial Properties Inc.",
+    name: "Mr Thomas Boakye",
+    role: "",
+    company: "",
     quote:
       "We've worked with many roofing contractors over the years, but Multi-Bee 360 stands out for their exceptional quality and service. They handled our complex commercial project with expertise and precision.",
     rating: 5,
   },
+
   {
     id: 3,
-    name: "Samantha Wilson",
-    role: "Property Manager",
-    company: "Lakeside Apartments",
+    name: "Elder Philip",
+    role: "",
+    company: "",
     quote:
       "After severe storm damage, Multi-Bee 360 quickly assessed and repaired our apartment complex roofs. Their emergency response was impressive, and they worked seamlessly with our insurance company.",
     rating: 4,
@@ -149,9 +150,9 @@ export default function AboutTestimonials() {
                     {/* Client Info */}
                     <div>
                       <h4 className="text-xl font-bold text-secondary">{testimonials[current].name}</h4>
-                      <p className="text-gray-600">
+                      {/* <p className="text-gray-600">
                         {testimonials[current].role}, {testimonials[current].company}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
