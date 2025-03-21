@@ -9,12 +9,12 @@ import { motion, AnimatePresence } from "framer-motion"
 // Slide content data (fixed syntax with commas)
 const slideContent = [
   {
-    heading: "Eco-Friendly & Modern Roofing Solutions",
-    paragraph: "Energy-efficient materials, expert craftmanship, and long-lasting protection. Schedule a consultation today.",
-  },
-  {
     heading: "🔨 We Handle Everything—So You Don’t Have To!",
     paragraph: "From material selection to expert installation, we take care of your roofing needs while you focus on enjoying your home.",
+  },
+  {
+    heading: "Eco-Friendly & Modern Roofing Solutions",
+    paragraph: "Energy-efficient materials, expert craftmanship, and long-lasting protection. Schedule a consultation today.",
   },
   {
     heading: "🏗 Your Roofing Partner for Large-Scale Projects",
