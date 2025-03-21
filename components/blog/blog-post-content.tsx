@@ -82,8 +82,9 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          >
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </motion.article>
 
           {/* Mobile Social Sharing */}
           <div className="mt-12 lg:hidden">

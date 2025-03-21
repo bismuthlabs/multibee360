@@ -4,52 +4,16 @@ import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-
-// Mock related posts data
-const getRelatedPosts = (currentSlug: string) => {
-  // In a real implementation, this would fetch posts related to the current one
-  return [
-    {
-      id: 1,
-      title: "How to Prepare Your Roof for the Rainy Season",
-      slug: "prepare-roof-for-rainy-season",
-      excerpt:
-        "Essential steps to ensure your roof is ready to withstand heavy rains and prevent leaks and water damage.",
-      publishedAt: "2023-04-10T14:20:00Z",
-      readTime: "5 min read",
-      category: "Seasonal Tips",
-      coverImage: "/placeholder.svg?height=400&width=600&text=Rainy%20Season%20Prep",
-    },
-    {
-      id: 2,
-      title: "5 Common Roofing Mistakes to Avoid",
-      slug: "common-roofing-mistakes-to-avoid",
-      excerpt: "Learn about the most common mistakes made during roof installation and repairs, and how to avoid them.",
-      publishedAt: "2023-02-18T08:30:00Z",
-      readTime: "6 min read",
-      category: "DIY Tips",
-      coverImage: "/placeholder.svg?height=400&width=600&text=Roofing%20Mistakes",
-    },
-    {
-      id: 3,
-      title: "Understanding Roof Warranties: What's Covered and What's Not",
-      slug: "understanding-roof-warranties",
-      excerpt:
-        "A comprehensive breakdown of manufacturer and contractor warranties for roofing, and what homeowners should know.",
-      publishedAt: "2023-01-30T13:10:00Z",
-      readTime: "9 min read",
-      category: "Consumer Guide",
-      coverImage: "/placeholder.svg?height=400&width=600&text=Roof%20Warranties",
-    },
-  ].filter((post) => post.slug !== currentSlug)
-}
+import blogPosts from "@/data/blog-posts"
 
 type BlogRelatedPostsProps = {
   currentSlug: string
 }
 
 export default function BlogRelatedPosts({ currentSlug }: BlogRelatedPostsProps) {
-  const relatedPosts = getRelatedPosts(currentSlug)
+  // Get related posts (excluding current post)
+  // In a real app, you might want to relate posts by category or tags
+  const relatedPosts = blogPosts.filter((post) => post.slug !== currentSlug).slice(0, 3)
 
   return (
     <section className="py-16 bg-white">

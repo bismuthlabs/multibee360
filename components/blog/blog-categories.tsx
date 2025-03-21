@@ -3,54 +3,60 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import blogPosts from "@/data/blog-posts"
 
-// Categories data
-const categories = [
-  {
-    name: "Roof Maintenance",
-    slug: "roof-maintenance",
-    count: 12,
-    icon: "🔧",
-    description: "Tips and guides for keeping your roof in optimal condition",
-  },
-  {
-    name: "Roofing Materials",
-    slug: "roofing-materials",
-    count: 8,
-    icon: "🏠",
-    description: "Information about different roofing materials and their benefits",
-  },
-  {
-    name: "Seasonal Tips",
-    slug: "seasonal-tips",
-    count: 6,
-    icon: "🌦️",
-    description: "Seasonal advice for protecting your roof year-round",
-  },
-  {
-    name: "Roof Design",
-    slug: "roof-design",
-    count: 5,
-    icon: "📐",
-    description: "Architectural insights and design considerations for roofing",
-  },
-  {
-    name: "DIY Tips",
-    slug: "diy-tips",
-    count: 7,
-    icon: "🛠️",
-    description: "Simple repairs and maintenance you can do yourself",
-  },
-  {
-    name: "Consumer Guide",
-    slug: "consumer-guide",
-    count: 4,
-    icon: "📋",
-    description: "Helpful information for making informed roofing decisions",
-  },
-]
+// Get unique categories and count posts in each
+const getCategoriesWithCounts = () => {
+  const categoryCounts: Record<string, number> = {}
+
+  blogPosts.forEach((post) => {
+    if (categoryCounts[post.category]) {
+      categoryCounts[post.category]++
+    } else {
+      categoryCounts[post.category] = 1
+    }
+  })
+
+  return Object.entries(categoryCounts).map(([name, count]) => ({
+    name,
+    slug: name.toLowerCase().replace(/\s+/g, "-"),
+    count,
+    icon: getCategoryIcon(name),
+    description: getCategoryDescription(name),
+  }))
+}
+
+// Helper function to get icon for category
+const getCategoryIcon = (category: string): string => {
+  const icons: Record<string, string> = {
+    "Roof Maintenance": "🔧",
+    "Roofing Materials": "🏠",
+    "Seasonal Tips": "🌦️",
+    "Roof Design": "📐",
+    "DIY Tips": "🛠️",
+    "Consumer Guide": "📋",
+  }
+
+  return icons[category] || "📄"
+}
+
+// Helper function to get description for category
+const getCategoryDescription = (category: string): string => {
+  const descriptions: Record<string, string> = {
+    "Roof Maintenance": "Tips and guides for keeping your roof in optimal condition",
+    "Roofing Materials": "Information about different roofing materials and their benefits",
+    "Seasonal Tips": "Seasonal advice for protecting your roof year-round",
+    "Roof Design": "Architectural insights and design considerations for roofing",
+    "DIY Tips": "Simple repairs and maintenance you can do yourself",
+    "Consumer Guide": "Helpful information for making informed roofing decisions",
+  }
+
+  return descriptions[category] || "Articles related to roofing and home maintenance"
+}
 
 export default function BlogCategories() {
+  const categories = getCategoriesWithCounts()
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">

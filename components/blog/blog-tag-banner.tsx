@@ -5,14 +5,18 @@ import { motion } from "framer-motion"
 import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 
-export default function BlogBanner() {
+type BlogTagBannerProps = {
+  tag: string
+}
+
+export default function BlogTagBanner({ tag }: BlogTagBannerProps) {
   return (
     <section className="relative bg-secondary text-white py-24 md:py-32 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/placeholder.svg?height=800&width=1920&text=Professional%20Roofers%20Working"
-          alt="Blog"
+          src="/placeholder.svg?height=800&width=1920&text=Roofing%20Blog%20-%20Tags"
+          alt={tag}
           fill
           className="object-cover opacity-30"
           priority
@@ -25,7 +29,6 @@ export default function BlogBanner() {
         <div className="absolute top-0 left-0 w-full h-full bg-primary transform -skew-x-12 -translate-x-1/2 opacity-80"></div>
       </div>
 
-      {/* Content Container */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h1
@@ -34,7 +37,7 @@ export default function BlogBanner() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Our Roofing Blog
+            Tag: {tag}
           </motion.h1>
 
           <motion.p
@@ -43,7 +46,7 @@ export default function BlogBanner() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg md:text-xl text-white/90 mb-8"
           >
-            Expert insights, tips, and news about roofing solutions and home maintenance
+            Browse all articles related to {tag}
           </motion.p>
 
           {/* Breadcrumb */}
@@ -57,7 +60,11 @@ export default function BlogBanner() {
               Home
             </Link>
             <ChevronRight className="w-4 h-4 mx-2 text-white/50" />
-            <span className="text-white">Blog</span>
+            <Link href="/blog" className="text-white/70 hover:text-white transition-colors duration-300">
+              Blog
+            </Link>
+            <ChevronRight className="w-4 h-4 mx-2 text-white/50" />
+            <span className="text-white">Tag: {tag}</span>
           </motion.div>
         </div>
       </div>

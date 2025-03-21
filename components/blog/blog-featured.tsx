@@ -4,34 +4,13 @@ import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import type { BlogPost } from "@/data/blog-posts"
 
-// Featured blog posts data
-const featuredPosts = [
-  {
-    id: 1,
-    title: "10 Signs Your Roof Needs Immediate Attention",
-    slug: "10-signs-your-roof-needs-immediate-attention",
-    excerpt:
-      "Learn the critical warning signs that indicate your roof requires professional inspection and potential repairs.",
-    publishedAt: "2023-06-15T10:30:00Z",
-    readTime: "6 min read",
-    category: "Roof Maintenance",
-    coverImage: "/placeholder.svg?height=600&width=1200&text=Roof%20Warning%20Signs",
-  },
-  {
-    id: 2,
-    title: "Metal vs. Asphalt Shingles: Which Roofing Material is Right for You?",
-    slug: "metal-vs-asphalt-shingles-comparison",
-    excerpt:
-      "Compare the benefits, drawbacks, and costs of metal roofing and asphalt shingles to make the best choice for your home.",
-    publishedAt: "2023-05-22T09:15:00Z",
-    readTime: "8 min read",
-    category: "Roofing Materials",
-    coverImage: "/placeholder.svg?height=600&width=1200&text=Roofing%20Materials",
-  },
-]
+type BlogFeaturedProps = {
+  posts: BlogPost[]
+}
 
-export default function BlogFeatured() {
+export default function BlogFeatured({ posts }: BlogFeaturedProps) {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -56,7 +35,7 @@ export default function BlogFeatured() {
 
         {/* Featured Posts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {featuredPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 20 }}

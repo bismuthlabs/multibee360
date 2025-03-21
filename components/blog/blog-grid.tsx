@@ -1,97 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight, Search, Filter } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import type { BlogPost } from "@/data/blog-posts"
 
-// Blog posts data
-const blogPosts = [
-  {
-    id: 1,
-    title: "10 Signs Your Roof Needs Immediate Attention",
-    slug: "10-signs-your-roof-needs-immediate-attention",
-    excerpt:
-      "Learn the critical warning signs that indicate your roof requires professional inspection and potential repairs.",
-    publishedAt: "2023-06-15T10:30:00Z",
-    readTime: "6 min read",
-    category: "Roof Maintenance",
-    tags: ["Roof Repair", "Home Maintenance", "Roof Inspection", "Leaks"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Roof%20Warning%20Signs",
-  },
-  {
-    id: 2,
-    title: "Metal vs. Asphalt Shingles: Which Roofing Material is Right for You?",
-    slug: "metal-vs-asphalt-shingles-comparison",
-    excerpt:
-      "Compare the benefits, drawbacks, and costs of metal roofing and asphalt shingles to make the best choice for your home.",
-    publishedAt: "2023-05-22T09:15:00Z",
-    readTime: "8 min read",
-    category: "Roofing Materials",
-    tags: ["Metal Roofing", "Asphalt Shingles", "Roofing Comparison", "Cost Analysis"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Roofing%20Materials",
-  },
-  {
-    id: 3,
-    title: "How to Prepare Your Roof for the Rainy Season",
-    slug: "prepare-roof-for-rainy-season",
-    excerpt:
-      "Essential steps to ensure your roof is ready to withstand heavy rains and prevent leaks and water damage.",
-    publishedAt: "2023-04-10T14:20:00Z",
-    readTime: "5 min read",
-    category: "Seasonal Tips",
-    tags: ["Rainy Season", "Roof Preparation", "Gutter Maintenance", "Waterproofing"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Rainy%20Season%20Prep",
-  },
-  {
-    id: 4,
-    title: "The Complete Guide to Roof Ventilation",
-    slug: "complete-guide-roof-ventilation",
-    excerpt:
-      "Understanding the importance of proper roof ventilation and how it affects your home's energy efficiency and roof longevity.",
-    publishedAt: "2023-03-05T11:45:00Z",
-    readTime: "7 min read",
-    category: "Roof Design",
-    tags: ["Ventilation", "Energy Efficiency", "Attic Insulation", "Roof Longevity"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Roof%20Ventilation",
-  },
-  {
-    id: 5,
-    title: "5 Common Roofing Mistakes to Avoid",
-    slug: "common-roofing-mistakes-to-avoid",
-    excerpt: "Learn about the most common mistakes made during roof installation and repairs, and how to avoid them.",
-    publishedAt: "2023-02-18T08:30:00Z",
-    readTime: "6 min read",
-    category: "DIY Tips",
-    tags: ["Common Mistakes", "DIY Roofing", "Professional Installation", "Quality Materials"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Roofing%20Mistakes",
-  },
-  {
-    id: 6,
-    title: "Understanding Roof Warranties: What's Covered and What's Not",
-    slug: "understanding-roof-warranties",
-    excerpt:
-      "A comprehensive breakdown of manufacturer and contractor warranties for roofing, and what homeowners should know.",
-    publishedAt: "2023-01-30T13:10:00Z",
-    readTime: "9 min read",
-    category: "Consumer Guide",
-    tags: ["Warranties", "Consumer Protection", "Manufacturer Warranty", "Contractor Warranty"],
-    coverImage: "/placeholder.svg?height=400&width=600&text=Roof%20Warranties",
-  },
-]
+type BlogGridProps = {
+  posts: BlogPost[]
+  showFilters?: boolean
+}
 
-// All available categories
-const allCategories = ["All", ...new Set(blogPosts.map((post) => post.category))]
-
-export default function BlogGrid() {
+export default function BlogGrid({ posts, showFilters = true }: BlogGridProps) {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 6
 
+  // Get all unique categories
+  const allCategories = ["All", ...Array.from(new Set(posts.map((post) => post.category)))]
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchTerm, selectedCategory])
+
   // Filter posts based on search term and category
-  const filteredPosts = blogPosts.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -120,54 +56,60 @@ export default function BlogGrid() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-2 h-2 rounded-full bg-primary"></div>
-            <span className="text-primary font-medium">ALL ARTICLES</span>
+            <span className="text-primary font-medium">ARTICLES</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">Browse Our Roofing Knowledge Base</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover expert advice, industry insights, and practical tips to help you make informed decisions about your
-            roofing needs.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">
+            {posts.length} {posts.length === 1 ? "Article" : "Articles"} Found
+          </h2>
+          {showFilters && (
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Discover expert advice, industry insights, and practical tips to help you make informed decisions about
+              your roofing needs.
+            </p>
+          )}
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-12 max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Search Input */}
-            <div className="relative flex-grow">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="w-5 h-5 text-gray-400" />
+        {showFilters && (
+          <div className="mb-12 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Search Input */}
+              <div className="relative flex-grow">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="w-5 h-5 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
               </div>
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
-              />
-            </div>
 
-            {/* Category Filter */}
-            <div className="relative md:w-1/3">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Filter className="w-5 h-5 text-gray-400" />
-              </div>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none bg-white"
-              >
-                {allCategories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <ArrowRight className="w-5 h-5 text-gray-400 transform rotate-90" />
+              {/* Category Filter */}
+              <div className="relative md:w-1/3">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Filter className="w-5 h-5 text-gray-400" />
+                </div>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none bg-white"
+                >
+                  {allCategories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                  <ArrowRight className="w-5 h-5 text-gray-400 transform rotate-90" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Blog Posts Grid */}
         {currentPosts.length > 0 ? (
