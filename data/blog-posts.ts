@@ -56,7 +56,7 @@ const blogPosts: BlogPost[] = [
     excerpt:
       "Learn the critical warning signs that indicate your roof requires professional inspection and potential repairs.",
     content: `
-    <p>Your roof is your home's first line of defense against the elements, and recognizing when it needs attention is crucial to prevent costly damage. Here are ten warning signs that indicate your roof may need immediate professional attention:</p>
+    <p>Your roof is your home's first line of defense against defects, and recognizing when it needs attention is crucial to prevent costly damage. Here are ten warning signs that indicate your roof may need immediate professional attention:</p>
     
     <h2>1. Missing or Damaged Shingles</h2>
     <p>After severe weather, inspect your roof for missing, cracked, or curling shingles. These damaged areas can allow water to penetrate your roof, leading to leaks and interior damage.</p>
@@ -655,7 +655,7 @@ const blogPosts: BlogPost[] = [
       <li>Minimize exposure time before installing final roofing material</li>
     </ul>
     
-    <p>Quality underlayment properly installed provides essential protection against wind-driven rain and ice dams, particularly in severe weather events.</p>
+    <p>Quality underlayment properly installed provides essential protection against wind-driven rain and, particularly in severe weather events.</p>
     
     <h2>Bonus Mistake: Hiring Unqualified Contractors</h2>
     

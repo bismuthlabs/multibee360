@@ -27,7 +27,7 @@ const services = [
     icon: Tool,
     title: "Roof Installation",
     description:
-      "Flawless installs with top-tier materials for a roof that stands tall against the elements, providing reliable protection for your property.",
+      "Flawless installs with top-tier materials for a roof that stands tall against defects, providing reliable protection for your property.",
     features: ["Expert Installation Team", "Premium Materials", "Lifetime Warranty", "Timely Completion"],
     image: "assets/images/services/project_5.jpg",
   },
